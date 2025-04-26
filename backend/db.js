@@ -1,14 +1,18 @@
-const mysql = require('mysql2/promise');
-require('dotenv').config();
+const mysql = require('mysql');
 
-const db = mysql.createPool({
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'car_dealer',
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',         // Replace with your MySQL username
+  password: '',         // Replace with your MySQL password
+  database: 'car_sales' // Replace with your database name
+});
+
+db.connect((err) => {
+  if (err) {
+    console.error('Database connection error:', err.stack);
+    return;
+  }
+  console.log('Connected to database');
 });
 
 module.exports = db;

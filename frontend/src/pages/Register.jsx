@@ -1,26 +1,23 @@
+// src/pages/Register.jsx
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../utils/axios';
 
 function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const history = useHistory(); // ✅ useHistory for v5
+  const [role, setRole] = useState('dealer'); // default role
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      await axios.post('http://localhost:5000/api/register', {
-        email,
-        password,
-      });
-
+      await axios.post('/register', { email, password, role }); // send role too
       alert('Registration successful! Please login.');
-      history.push('/login'); // ✅ use history.push()
+      window.location.href = "/login";
     } catch (error) {
       console.error('Registration error:', error);
-      alert('Registration failed. Please try again.');
+      setErrorMessage('Registration failed. Please try again.');
     }
   };
 
@@ -42,8 +39,14 @@ function Register() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+        <select value={role} onChange={(e) => setRole(e.target.value)} required>
+          <option value="admin">Admin</option>
+          <option value="sales">Sales</option>
+          <option value="dealer">Dealer</option>
+        </select>
         <button type="submit">Register</button>
       </form>
+      {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
     </div>
   );
 }

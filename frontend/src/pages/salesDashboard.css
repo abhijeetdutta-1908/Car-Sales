@@ -1,0 +1,55 @@
+.cw-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    padding: 0 32px;
+    height: 70px;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,0.04);
+    font-family: 'Lato', Arial, sans-serif;
+  }
+  .cw-header__logo img {
+    height: 36px;
+  }
+  .cw-header__nav {
+    display: flex;
+    gap: 32px;
+  }
+  .cw-header__navlink {
+    color: #25313c;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    transition: color 0.15s;
+  }
+  .cw-header__navlink:hover {
+    color: #57a8bd;
+  }
+  .cw-header__search-icons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .cw-header__search {
+    height: 36px;
+    border: 1px solid #c8cfd4;
+    border-radius: 7px;
+    padding: 0 16px;
+    font-size: 1rem;
+    background: #f9f9f9;
+    transition: border-color 0.2s;
+  }
+  .cw-header__search:focus {
+    border-color: #57a8bd;
+    outline: none;
+  }
+  .cw-header__icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+  }
+  

@@ -60,7 +60,7 @@ app.post('/register', (req, res) => {
 
 // Login Route
 app.post('/login', (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, role } = req.body; // 👈 also take role from frontend
 
   db.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
     if (err) return res.status(500).json({ message: 'Database error' });
@@ -71,6 +71,12 @@ app.post('/login', (req, res) => {
 
     const user = results[0];
 
+    // 🔥 First check if the role matches
+    if (user.role !== role) {
+      return res.status(401).json({ message: 'Invalid role' }); // role mismatch
+    }
+
+    // 🔥 Then check password
     bcrypt.compare(password, user.password, (err, isMatch) => {
       if (err) return res.status(500).json({ message: 'Error comparing passwords' });
 
@@ -82,6 +88,7 @@ app.post('/login', (req, res) => {
     });
   });
 });
+
 
 // Start server
 app.listen(port, () => {

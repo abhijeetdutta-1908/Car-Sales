@@ -1,0 +1,105 @@
+/* src/pages/Login.css */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 1rem;
+    box-sizing: border-box;
+    position: relative; /* To allow pseudo-element positioning */
+    overflow: hidden; /* Prevent overflow from the background */
+}
+
+.login-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('D:/Car-Sales/frontend/src/pages/sebastian-svenson-LpbyDENbQQg-unsplash.jpg') no-repeat center center/cover;
+    filter: blur(8px); /* Apply blur effect only to the background */
+    z-index: 0; /* Ensure it stays behind the card */
+}
+
+.login-card {
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    padding: 2.5rem 3.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 400px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* Ensure it appears above the blurred background */
+    z-index: 1; /* Stack above the blurred background */
+}
+
+.login-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.login-card h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.login-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.login-card input,
+.login-card select {
+    padding: 0.85rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-card input:focus,
+.login-card select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+}
+
+.login-card button {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    border: none;
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.login-card button:hover {
+    background: linear-gradient(135deg, #0056b3, #003f7f);
+    transform: scale(1.05);
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.register-link a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.register-link a:hover {
+    color: #0056b3;
+}
